@@ -1,1 +1,0 @@
-//static note js file

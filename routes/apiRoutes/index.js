@@ -27,16 +27,16 @@ router.post('/', (req, res) => {
         status: 'success', 
         body: newNote,
     };
-    // console.log(response);
-
+    console.log(response);
     res.json(response);
-    } else {
-        res.json('Error in posting note');
-    
     notes.push(newNote);
-    FileSystem.writeFileSync('../../db/db.json', JSON.stringify(notes));
+    fs.writeFileSync('../../db/db.json', JSON.stringify(notes));
     res.json(newNote);
-};
+    } else {
+        // res.json('Error in posting note');
+        console.log('error')
+            };
+
 });
 
 //delete notes

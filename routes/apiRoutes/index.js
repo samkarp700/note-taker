@@ -1,8 +1,8 @@
 // file for api notes
 const router = require('express').Router();
-const {filterByQuery} = require('../../lib/notes');
 const notes = require('../../db/db.json');
 const uuid = require('../../helpers/uuid');
+const fs = require('fs');
 
 //api get notes
 //route to api
@@ -32,7 +32,11 @@ router.post('/', (req, res) => {
     res.json(response);
     } else {
         res.json('Error in posting note');
-    }
+    
+    notes.push(newNote);
+    FileSystem.writeFileSync('../../db/db.json', JSON.stringify(notes));
+    res.json(newNote);
+};
 });
 
 //delete notes

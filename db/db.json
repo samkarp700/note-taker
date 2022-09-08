@@ -1,14 +1,7 @@
-{
-  "notestest": 
-  [
-    {
+[
+  {
         "title":"Test Title",
         "text":"Test text"
-    }, 
-    {
-      "title": "title 2", 
-      "text": "test text - must do!"
     }
-  ]
-}
+]
 

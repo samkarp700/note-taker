@@ -24,22 +24,35 @@ router.post('/', (req, res) => {
             text, 
             note_id: uuid(),
         };
+    fs.readFile('../../db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
+            const parsedNotes = JSON.parse(data);
+
+            parsedNotes.push(newNote);
+
+            fs.writeFile(
+                '../../db/db.json', 
+                JSON.stringify(parsedNotes, null, 4), 
+                (writeErr) =>
+                writeErr
+                ? console.error(writeErr)
+                : console.info('Successfully added note')
+            );
+        }
+    });
+
     const response = {
         status: 'success', 
         body: newNote,
     };
+    
     console.log(response);
     res.json(response);
-    notes.push(newNote);
-    fs.writeFileSync(
-        path.join(__dirname, '../../db.db.json'), 
-        JSON.stringify(req.body, newNote)
-    ); return notes
-    } else {
-        // res.json('Error in posting note');
-        console.log('error')
-            };
-
+} else {
+    res.json('Error in posting note');
+}
 });
 
 //delete notes

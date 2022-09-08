@@ -12,6 +12,8 @@ const htmlRoutes = require('./routes/htmlRoutes');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
+
+
 //route to api
 //http://localhost:3001/api/notes works
 //moved to api route noteRoute.js

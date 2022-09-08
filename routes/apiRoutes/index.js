@@ -6,6 +6,18 @@ const fs = require('fs');
 const path = require('path');
 
 
+//functions needed
+
+function showAllNotes(query, notesArray) {
+    let filteredNotes = notesArray
+    if (query.title) {
+        filteredNotes = filteredNotes.filter(
+            (note) => note.title === query.title
+        )
+    } return filteredNotes
+}
+
+//create note function
 function createNote(body, notesArray) {
     const note = body
     notesArray.push(note)
@@ -17,10 +29,8 @@ function createNote(body, notesArray) {
 
 
 
-
-//api get notes
+//api routes
 //route to api
-//http://localhost:3001/api/notes works
 //all routes already have /api/notes (all post will be /, /:id for delete ,etc)
 router.get('/', (req, res) => {
     res.json(notes);
@@ -33,44 +43,7 @@ router.post('/', (req, res) => {
     const note = createNote(req.body, notes)
     res.json(note);
 })
-    // res.json(`${req.method} saved to notes.`);
-    // const { title, text } = req.body;
-    // if (title && text) {
-    //     const newNote ={
-    //         title, 
-    //         text, 
-    //         note_id: uuid(),
-    //     };
-    // fs.readFile('../../db/db.json', 'utf8', (err, data) => {
-    //     if (err) {
-    //         console.error(err);
-    //     } else {
-    //         const parsedNotes = JSON.parse(data);
-
-    //         parsedNotes.push(newNote);
-
-    //         fs.writeFile(
-    //             '../../db/db.json', 
-    //             JSON.stringify(parsedNotes, null, 4), 
-    //             (writeErr) =>
-    //             writeErr
-    //             ? console.error(writeErr)
-    //             : console.info('Successfully added note')
-    //         );
-    //     }
-    // });
-
-//     const response = {
-//         status: 'success', 
-//         body: newNote,
-//     };
-    
-//     console.log(response);
-//     res.json(response);
-// } else {
-//     res.json('Error in posting note');
-// }
-// });
+ 
 
 //delete notes
 

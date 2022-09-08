@@ -6,8 +6,12 @@ const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
-
+//middleware
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.static("public"));
 //route to api
 //http://localhost:3001/api/notes works
 //moved to api route noteRoute.js
@@ -18,6 +22,7 @@ const apiRoutes = require('./routes/apiRoutes');
 // });
 
 app.use('/api/notes', apiRoutes);
+app.use('/', htmlRoutes);
 
 
 app.listen(PORT, () => {

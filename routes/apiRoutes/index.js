@@ -9,16 +9,11 @@ const uuid = require('../../helpers/uuid');
 //http://localhost:3001/api/notes works
 //all routes already have /api/notes (all post will be /, /:id for delete ,etc)
 router.get('/', (req, res) => {
-    let results = notes;
-    if (req.query) {
-        results = filterByQuery(req.query, results);
-    }
-    // console.log(req.query)
-    res.json(results);
+    res.json(notes);
 });
 
 
-//save notes
+//save notes//add id
 router.post('/', (req, res) => {
     // res.json(`${req.method} saved to notes.`);
     const { title, text } = req.body;
@@ -39,6 +34,9 @@ router.post('/', (req, res) => {
         res.json('Error in posting note');
     }
 });
+
+//delete notes
+
 
 
 

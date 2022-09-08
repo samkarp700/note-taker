@@ -3,6 +3,7 @@ const router = require('express').Router();
 const notes = require('../../db/db.json');
 const uuid = require('../../helpers/uuid');
 const fs = require('fs');
+const path = require('path');
 
 //api get notes
 //route to api
@@ -30,8 +31,10 @@ router.post('/', (req, res) => {
     console.log(response);
     res.json(response);
     notes.push(newNote);
-    fs.writeFileSync('../../db/db.json', JSON.stringify(notes));
-    res.json(newNote);
+    fs.writeFileSync(
+        path.join(__dirname, '../../db.db.json'), 
+        JSON.stringify(req.body, newNote)
+    ); return notes
     } else {
         // res.json('Error in posting note');
         console.log('error')

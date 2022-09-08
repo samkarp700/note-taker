@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const {filterByQuery} = require('../../lib/notes');
 const notes = require('../../db/db.json');
+const uuid = require('../../helpers/uuid');
 
 //api get notes
 //route to api
@@ -16,8 +17,29 @@ router.get('/', (req, res) => {
     res.json(results);
 });
 
-//api get notes id
 
-//post notes
+//save notes
+router.post('/', (req, res) => {
+    // res.json(`${req.method} saved to notes.`);
+    const { title, text } = req.body;
+    if (title && text) {
+        const newNote ={
+            title, 
+            text, 
+            note_id: uuid(),
+        };
+    const response = {
+        status: 'success', 
+        body: newNote,
+    };
+    // console.log(response);
+
+    res.json(response);
+    } else {
+        res.json('Error in posting note');
+    }
+});
+
+
 
 module.exports = router;

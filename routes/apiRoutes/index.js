@@ -4,7 +4,7 @@ const notes = require('../../db/db.json');
 const uuid = require('../../helpers/uuid');
 const fs = require('fs');
 const path = require('path');
-const { showAllNotes, createNote, findbyId } = require('../../lib/index');
+const { showAllNotes, createNote, findbyId, deleteIt } = require('../../lib/index');
 
 
 
@@ -21,11 +21,13 @@ router.post('/', (req, res) => {
     req.body.id = notes.length.toString()
     const note = createNote(req.body, notes)
     res.json(note);
-})
+});
  
 
 //delete notes
-
+router.delete('/:id', (req, res) => {
+    res.json(deleteIt(req.params.id, notes));
+});
 
 
 

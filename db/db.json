@@ -1,5 +1,4 @@
-{
-  "notesArray": [
+ [
     {
       "title": "test title",
       "text": "test text"
@@ -8,16 +7,5 @@
       "title": "here's a title",
       "text": "test ttextaetkjakdf",
       "id": "1"
-    },
-    {
-      "title": "omg I could cry",
-      "text": "here's me crying!!!!!",
-      "id": "2"
-    },
-    {
-      "title": "testing titles left and righ",
-      "text": "testing text left and right",
-      "id": "3"
     }
   ]
-}

@@ -1,6 +1,18 @@
-[
 {
-  "title": "test title", 
-  "text": "test text"
+  "notes": [
+    {
+      "title": "test title",
+      "text": "test text"
+    },
+    {
+      "title": "here's a title",
+      "text": "test ttextaetkjakdf",
+      "id": "1"
+    },
+    {
+      "title": "omg I could cry",
+      "text": "here's me crying!!!!!",
+      "id": "2"
+    }
+  ]
 }
-]
